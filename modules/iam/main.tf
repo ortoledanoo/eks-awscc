@@ -1,7 +1,7 @@
 # EKS Cluster IAM Role
 resource "awscc_iam_role" "eks_cluster" {
   role_name = "${var.cluster_name}-cluster-role"
-  
+
   assume_role_policy_document = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -14,7 +14,7 @@ resource "awscc_iam_role" "eks_cluster" {
       }
     ]
   })
-  
+
   # EKS Cluster Policy
   policies = [
     {
@@ -33,7 +33,7 @@ resource "awscc_iam_role" "eks_cluster" {
       })
     }
   ]
-  
+
   tags = [
     {
       key   = "Name"
@@ -49,7 +49,7 @@ resource "awscc_iam_role" "eks_cluster" {
 # Fargate Profile IAM Role
 resource "awscc_iam_role" "eks_fargate" {
   role_name = "${var.cluster_name}-fargate-role"
-  
+
   assume_role_policy_document = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -62,7 +62,7 @@ resource "awscc_iam_role" "eks_fargate" {
       }
     ]
   })
-  
+
   # Fargate Pod Execution Role Policy
   policies = [
     {
@@ -86,7 +86,7 @@ resource "awscc_iam_role" "eks_fargate" {
       })
     }
   ]
-  
+
   tags = [
     {
       key   = "Name"

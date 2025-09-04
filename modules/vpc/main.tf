@@ -3,7 +3,7 @@ resource "awscc_ec2_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
-  
+
   tags = [
     {
       key   = "Name"
@@ -36,9 +36,9 @@ resource "awscc_ec2_subnet" "public" {
   vpc_id            = awscc_ec2_vpc.main.id
   cidr_block        = var.public_subnet_cidrs[count.index]
   availability_zone = var.availability_zones[count.index]
-  
+
   map_public_ip_on_launch = true
-  
+
   tags = [
     {
       key   = "Name"
@@ -57,7 +57,7 @@ resource "awscc_ec2_subnet" "private" {
   vpc_id            = awscc_ec2_vpc.main.id
   cidr_block        = var.private_subnet_cidrs[count.index]
   availability_zone = var.availability_zones[count.index]
-  
+
   tags = [
     {
       key   = "Name"
@@ -77,7 +77,7 @@ resource "awscc_ec2_subnet" "private" {
 # Route Table for Public Subnets
 resource "awscc_ec2_route_table" "public" {
   vpc_id = awscc_ec2_vpc.main.id
-  
+
   tags = [
     {
       key   = "Name"
@@ -101,7 +101,7 @@ resource "awscc_ec2_subnet_route_table_association" "public" {
 resource "awscc_ec2_route_table" "private" {
   count  = length(var.private_subnet_cidrs)
   vpc_id = awscc_ec2_vpc.main.id
-  
+
   tags = [
     {
       key   = "Name"
