@@ -1,0 +1,29 @@
+# Ignore everything by default
+*
+
+# Allow All Directories
+!*/
+
+# Allow Terraform configuration files
+!*.tf
+!*.tfvars
+
+# Allow documentation
+!README.md
+
+# Allow this .gitignore file
+!.gitignore
+
+# Allow envs directory and its contents
+!envs/
+!envs/**
+
+# Exclude Terraform working directory
+.terraform/
+.terraform.lock.hcl
+
+# Exclude local system files
+.DS_Store
+
+# GitHub Actions
+!*.yaml
