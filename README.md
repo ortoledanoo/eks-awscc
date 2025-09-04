@@ -1,4 +1,4 @@
-# Private EKS Fargate Cluster with AWS Cloud Control (awscc) Provider
+# Private EKS Fargate Cluster with AWS Cloud Control (awscc) Provider Lightrail
 
 private EKS cluster configuration using Fargate 
 
